@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,29 +9,38 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
 </head>
+{%block body %}
 <body>
-    <h1>WELCOME TO MEDSUPPLYS!</h1>
+  {% for per in person %}
+  <center><h1>{{per.firstName}}, Welcome To MedSupplys!</h1></center>
+  {% endfor %}
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  
 <div class="container">
 <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>First Name</th>
-		<th>Last Name</th>
-		<th>Email</th>
-		<th>Insurance</th>
-      </tr>
-    </thead>
-    <tbody>
-	{% for per in person %}  
-      <tr>
-        <td>{{per.firstName}}</td>
-        <td>{{per.lastName}}</td>
-		<td>{{per.email}}</td>
-		<td>{{per.insurance}}</td>
-      </tr>
-	  {% endfor %} 
-	</tbody>
+  <thead>
+    <tr>
+      <th></th>
+  <th>Item Name</th>
+  <th>Email</th>
+  <th>Insurance</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for per in person %}  
+    <tr>
+      <td><input type="checkbox" name="check" id="check"></td>
+      <td>Trach</td>
+  <td>{{per.email}}</td>
+  <td>{{per.insurance}}</td>
+    </tr>
+  {% endfor %} 
+  {{form}}
+</tbody>
 </table>	
 </div>
 </body>
+{% endblock %}
 </html>

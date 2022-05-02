@@ -5,11 +5,9 @@ from django.core.exceptions import ValidationError
 class FormPerson(forms.ModelForm):
     class Meta:
         model = Person
-        fields = ["firstName", "lastName", "email", "insurance"]
+        fields = ["firstName", "lastName", "passwd", "confirmpasswd", "email", "insurance"]
 
-   
-    # def clean(self):
-    #     email = self.cleaned_data.get('email')
-    #     if Person.objects.filter(email=email).exists():
-    #         raise forms.ValidationError('Email "%s" is already in use' % email)
-    #     return email
+
+class LoginPerson(forms.Form):
+    email = forms.CharField(label="Email", max_length=100)
+    passwd = forms.CharField(label="Password", widget=forms.PasswordInput, max_length=20)
